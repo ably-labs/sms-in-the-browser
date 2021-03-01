@@ -13,10 +13,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <SmsComponent />
-      
+        <SmsComponent />      
       </main>
-
 
       <footer className={styles.footer}>
         <a
