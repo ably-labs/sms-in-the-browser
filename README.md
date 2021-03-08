@@ -2,7 +2,19 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First you will need to create a .env file with an Ably API key to authenticate with Ably. In the root of your directory, make a new file called .env and add your API key:
+
+```bash
+ABLY_API_KEY=your-ably-api-key:goes-here
+```
+
+Then install the dependencies
+```bash
+npm install
+```
+## Running the dev server
+
+To run the development server:
 
 ```bash
 npm run dev
@@ -12,7 +24,6 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
