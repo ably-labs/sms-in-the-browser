@@ -4,12 +4,9 @@ import styles from './SmsComponent.module.css';
 
 const SmsComponent = () => {
 
-  let inputBox = null;
   let messageEnd = null;
 
-  const [messageText, setMessageText] = useState("");
   const [receivedMessages, setMessages] = useState([]);
-  const messageTextIsEmpty = messageText.trim().length === 0;
 
   const [channel, ably] = useChannel("sms-notifications", (message) => {
     const history = receivedMessages.slice(-199);
@@ -18,7 +15,7 @@ const SmsComponent = () => {
 
   const messages = receivedMessages.map((message, index) => {
     console.log(message);
-    return <span key={index} className={styles.message}>{message.data}</span>;
+    return (<div key={index} className={styles.message}>{message.data.text}</div>);
   });
 
   useEffect(() => {
