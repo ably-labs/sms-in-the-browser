@@ -1,5 +1,41 @@
+.chatHolder {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 3px 10px 1px rgb(0 0 0 / 20%);
+}
+
+.title {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+    background: linear-gradient(to right,#363795,#005C97);
+}
+
 .message {
-    border: 1px solid black;
-    margin: 5px;
-    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: #333;
+}
+
+.text {
+    grid-column: span 2;
+    margin: 0 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.from, .when {
+    margin: 10px;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.when {
+    text-align: right;
 }
