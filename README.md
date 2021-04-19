@@ -329,23 +329,19 @@ In order to deploy your new sms voting app to Vercel you'll need to:
 
 ## <a name="buynumber">Setting Up an SMS Number for Your App</a>
 
-For this demo to work, you'll need to buy an inexpensive phone number from Vonage.
+To receive SMS messages, you'll need to rent a virtual phone number from Vonage and configure it.
 
-We went with a $1/month Irish phone number - as it supported sending and receiving SMS messages, and there were plenty available to buy in the Vonage API dashboard.
-
-First, you'll need to sign up or login to Vonage by visiting [Vonage APIs](http://dashboard.nexmo.com/).
+First, log into your Vonage account by visiting the [dashboard](http://dashboard.nexmo.com/).
 
 Once you've created and verified your account, you can buy a number by going to: Numbers => Buy Numbers. Search for a number that works for you and add some credits to pay for the number.
 
-Irish numbers are good because they're cheap!
-
 Once you've purchased your number, you need to configure the `SMS Inbound Webhook URL`.
 
-You can do this by going to: Numbers => Your Numbers => Clicking the pen icon.
+Do this by going to: Numbers => Your Numbers => Clicking the pen icon.
 
 You'll be greeted with a modal dialog box, and you need to put your `acceptWebhook` API url into the box.
 
-If your Vercel app is called `your-vercel-app`, the webhook URL would be `https://[your-vercel-app].vercel.app/api/acceptWebhook`
+If your Vercel app is called `your-vercel-app`, the webhook URL would be `https://your-vercel-app.vercel.app/api/acceptWebhook`
 
 ## Make It Yours!
 
