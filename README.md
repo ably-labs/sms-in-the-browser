@@ -33,7 +33,7 @@ Vercel is a hosting platform, built from the ground up to host Next.js apps, and
 
 This is where Ably comes in. The client can connect to an [Ably Channel](https://www.ably.io/documentation/realtime/channels) and send and receive messages on it to add Realtime functionality to your app by managing your WebSocket connections for you. We'll go over how to build an app which uses realtime functionality in this walkthrough, if preferred, you can [jump straight to how to use Ably with Vercel](#ablyandvercel).
 
-## What are we going to build?
+## What Are We Going to Build?
 
 We'll build a web app that displays SMS in the browser in realtime as they are received.
 
@@ -49,7 +49,7 @@ In order to build this app, you will also need:
 * **A Vercel Account** for hosting on production: [Create an account with Vercel for free](https://vercel.com/signup).
 * **Node 12** (LTS) or greater: [Install Node](https://nodejs.org/en/).
 
-### <a name="ablycreds">Local dev pre-requirements</a>
+### <a name="ablycreds">Local Dev Pre-requirements</a>
 
 You'll need an API key from Ably to authenticate with the Ably Service. To get an API key, once you have [created an Ably account](https://www.ably.io/signup):
 
@@ -59,8 +59,8 @@ You'll need an API key from Ably to authenticate with the Ably Service. To get a
 
 Vercel provides some Next.js command line tools to help us. They don't need to be installed on your system as they're executed using `npx`.
 
-## Building the Realtime SMS app
-#### <a name="newnextjsapp">To create the starter app:</a>
+## Building the Realtime Sms App
+#### <a name="newnextjsapp">To Create the Starter App:</a>
 
 1. In your terminal, type `npx create-next-app` to create an empty Next.js app.
 2. Create a file called `.env` in the root of the directory, this is where we'll put the project's environment variables.
@@ -76,17 +76,17 @@ npm run dev
 
 The Next.js dev server will spin up and you'll see an empty Next.JS starter app. This is what we'll build our sms voting app on top of.
 
-## Realtime Pub/Sub messaging with Ably
+## Realtime Pub/Sub Messaging With Ably
 
 This app uses [Ably](https://www.ably.io/) for [pub/sub messaging](https://www.ably.io/documentation/core-features/pubsub) between the users. Pub/Sub stands for Publish and Subscribe, and it is a popular pattern used for realtime data delivery. The app will be able to send, or `publish` messages over an [Ably Channel](https://www.ably.io/channels). The clients that use the app will be `subscribed` to the channel and will be able to receive the messages. We'll build a UI to create messages to be sent, and to display messages as they are received.
 
-### Authentication with the Ably service
+### Authentication with the Ably Service
 
 Vercel Next.js apps don't run traditional "server side code", however, you can add JavaScript files to `/pages/api/*` and the Vercel deployment engine will treat each one as an API endpoint and manage them as serverless functions for you.
 
 For local development, the Next.js tools run these functions in a Node server, so they work as you would expect in your local dev environment. We're going to add a Next.js / Vercel serverless function to the starter code that we created earlier to authenticate our app with Ably, and make it possible to start sending and receiving messages over the Ably service.
 
-### <a name="ablyandvercel">Writing the Serverless function to connect to Ably</a>
+### <a name="ablyandvercel">Writing the Serverless Function to Connect to Ably</a>
 
 You'll need to install the [Ably npm package](https://www.npmjs.com/package/ably/v/1.2.5-beta.1) (it's important you're running Ably 1.2.5+ for this app, for compatibility with Vercel). 
 
@@ -111,7 +111,7 @@ export default async function handler(req, res) {
 This serverless function uses the Ably SDK to create a `tokenRequest` with your API key. This token will be used later - it allows you to keep your "real" API key safe while using it in the Next.js app. By default, this API is configured to be available on `http://localhost:3000/api/createTokenRequest`
 We're going to provide this URL to the Ably SDK in our client to authenticate with Ably.
 
-## <a name="receivesms">Receiving an SMS using Vonage and Vercel</a>
+## <a name="receivesms">Receiving an SMS Using Vonage and Vercel</a>
 
 Vonage allows us to configure mobile phone numbers in their API dashboard. When an SMS is received it will trigger our API.
 
@@ -169,7 +169,7 @@ function getSmsDetails(req, res) {
 
 We're going to move back to the app for now, but we'll come back to this function at the end once our app is deployed to `Vercel` and our function has a `public url`.
 
-## Reacting to SMS messages with the SmsComponent
+## Reacting to SMS Messages with the SmsComponent
 
 The app logic is contained inside the `SmsComponent.jsx` component.
 
@@ -239,7 +239,7 @@ Finally we create our component and return it:
 
 Right at the bottom of the file, the function is exported as `SmsComponent` so that it can be referenced in the Next.js index page.
 
-### <a name="reactandably">Using Ably correctly in React Components</a>
+### <a name="reactandably">Using Ably Correctly in React Components</a>
 
 One of the trickier parts of using Ably with React Functional Components is knowing when and where to create the instance of the SDK and when and where to connect to your channel(s). You will want to avoid instancing the SDK when the component is rendered as this could make multiple connections and burn through your Ably account limits.
 
@@ -296,7 +296,7 @@ export function useChannel(channelName, callbackOnMessage) {
 
 The `useChannel` Hook returns both the current Ably channel and the Ably SDK for the calling code to use to send messages. This hook encapsulates Ably pub/sub for React functional components in one place, so we don't need to worry about it elsewhere, and the code that uses it can just process the messages it receives.
 
-### Making everything look beautiful with module CSS - `SmsComponent.module.css`
+### Making Everything Look Beautiful With Module CSS - `SmsComponent.module.css`
 
 You might have noticed when writing the chat component that `Next.js` has some compiler enforced conventions that dictate where you keep your CSS and how to import it.
 For this app, we will create a CSS file with the same name as the `.jsx` file, just with the extensions `.module.css`. We do this to keep management of the components easier, if in the future we want to delete this component it is nice and simple to also remove its CSS. Once created, it can be imported into the component:
@@ -336,7 +336,7 @@ In order to deploy your new sms voting app to Vercel you'll need to:
 6. Watch your app deploy
 7. Visit the newly created URL in your browser!
 
-## <a name="buynumber">Setting up an SMS number for your app</a>
+## <a name="buynumber">Setting Up an SMS Number for Your App</a>
 
 For this demo to work, you'll need to buy an inexpensive phone number from Vonage.
 
@@ -356,7 +356,7 @@ You'll be greeted with a modal dialog box, and you need to put your `acceptWebho
 
 If your Vercel app is called `your-vercel-app`, the webhook URL would be `https://[your-vercel-app].vercel.app/api/acceptWebhook`
 
-## Make it yours!
+## Make It Yours!
 
 This demo is open source, fork it and make it your own. Don't forget to show us what you build [@ablyRealtime](https://twitter.com/ablyrealtime).
 
