@@ -169,7 +169,7 @@ function getSmsDetails(req, res) {
 
 We're going to move back to the app for now, but we'll come back to this function at the end once our app is deployed to `Vercel` and our function has a `public url`.
 
-# Reacting to SMS messages with the ResultsComponent
+# Reacting to SMS messages with the SmsComponent
 
 The app logic is contained inside the `SmsComponent.jsx` component.
 
@@ -296,13 +296,13 @@ export function useChannel(channelName, callbackOnMessage) {
 
 The `useChannel` Hook returns both the current Ably channel and the Ably SDK for the calling code to use to send messages. This hook encapsulates Ably pub/sub for React functional components in one place, so we don't need to worry about it elsewhere, and the code that uses it can just process the messages it receives.
 
-## Making everything look beautiful with module CSS - `QuestionComponent.module.css` and `ResultsComponent.module.css`
+## Making everything look beautiful with module CSS - `SmsComponent.module.css`
 
 You might have noticed when writing the chat component that `Next.js` has some compiler enforced conventions that dictate where you keep your CSS and how to import it.
 For this app, we will create a CSS file with the same name as the `.jsx` file, just with the extensions `.module.css`. We do this to keep management of the components easier, if in the future we want to delete this component it is nice and simple to also remove its CSS. Once created, it can be imported into the component:
 
 ```js
-import styles from './ResultsComponent.module.css';
+import styles from './SmsComponent.module.css';
 ```
 
 When creating a CSS class on a JSX element, we use the following syntax on the element:
