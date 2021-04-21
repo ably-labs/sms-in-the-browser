@@ -1,8 +1,5 @@
 .chatHolder {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
+    width: 100%;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 3px 10px 1px rgb(0 0 0 / 20%);
