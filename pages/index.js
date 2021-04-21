@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1>Text +33 644 634 209<br/>To see your message on this page</h1>
+        <h1>Text (+44) 7418342688<br/>To see your message on this page</h1>
         <SmsComponent />      
       </main>
 
